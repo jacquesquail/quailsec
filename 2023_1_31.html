@@ -6,11 +6,11 @@
   <body>
     <h1><a href="index.html">QuailSec Blog</a></h1>
     <h2>Finding a UPN with the MailboxOwnerSID value</h4>
-    <p class="edit">Edited: 2022-31-1 @ 21:14</p>
+    <p class="edit">Edited: 2022-31-1 @ 21:38</p>
     <p>While reviewing Mailbox access delegation alerts in Microsoft Purview (compliance center) I started to come across a "SID-like" value in the place of the delegee's mailbox UPN or identifier. In order to determine who was granted access to the mailbox, I needed to convert this "SID" into a useful identifier for the mailbox. I attempted searching for this value in Active Directory, Azure AD, and Exchange Online but nothing was returned. After about an hour of research, I uncovered nothing.</p>
     <img src="2023_1_31_1.png">
     <p class="footnote">A screenshot of the new alert.</p>
-    <p>On a whim, I decided to search across all columns in the OfficeActivity table in Microsoft Sentinel (Microsoft 365 activity log) to see if the value popped up anywhere. To my surprise, it did - under the column called MailboxOwnerSID!</p>
+    <p>On a whim, I decided to search across all columns in the OfficeActivity table in Microsoft Sentinel (Microsoft 365 activity log) to see if the value popped up anywhere. To my surprise, it did - under the column called MailboxOwnerSID! Using these logs, I can now correlate the MailboxOwnerSID with the relevant users activity.</p>
     <p>I've pasted the KQL query below. I'm sure this will also work for the relevant table in 365 Defender.</p>
     <p class="code">OfficeActivity<br>
         | where MailboxOwnerSid == "MAILBOX OWNER SID HERE"</p>
