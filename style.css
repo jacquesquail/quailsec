@@ -1,0 +1,28 @@
+body * {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.date{
+    font-style:italic;
+    padding-right: 5px;
+}
+p {
+    padding-bottom: 10px;
+}
+img {
+    width: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.code {
+    background-color: rgb(230, 230, 230);
+    text-align: left;
+    padding: 15px;
+}
+.footnote{
+    font-style: italic;
+    color:gray;
+}
