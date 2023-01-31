@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>QuailSec Blog</title>
+    <link rel="stylesheet" href="style.css" >
+  </head>
+  <body>
+    <h1><a href="index.html">QuailSec Blog</a></h1>
+    <h2>nslookup works, but ping does not?</h2>
+    <p>I love my home lab and all of it's quirks. It's in no way perfect, but it does it's job and never complains. However, there was always one issue that would pop up from time to time. DNS! I was frequently having issues where certain internal service names weren't resolving. This issue seemed to be intermittent, and restarting the DNS service occasionally resolved the issue but it would always return.</p>
+    <p>Until now, I always thought you could configure redundancy into your DNS configuration through the "Primary" and "Secondary" DNS servers. I assumed that the "Primary" server would take priority, and the resolver would fall back to the "Secondary" server if the priamry is unreachable. THIS IS NOT THE CASE and actually might be a misnomer on certain configurations.</p>
+    <p>At least on MacOS and Windows machines, all DNS servers must be able to resolve names in zones you are after. In my case, I had my Pi-hole set as the primary, and Cloudflares 1.1.1.1 as the secondary. My Pi-hole is on my LAN and is the only server able to resolve names in my local Zone. Occasionally my Macbook would contact Cloudflare to resolve internal names, thus failing.</p>
+    <p>The fix was simple. I only keep local DNS servers in my configuration now. Although this sucks when my Pi-hole goes down, it's definitely better for security as my devices won't be telling Cloudflare what's on my LAN!</p>
+  </body>
+</html>
