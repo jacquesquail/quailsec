@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>QuailSec Blog</title>
+    <link rel="stylesheet" href="style.css" >
+  </head>
+  <body>
+    <h1><a href="index.html">QuailSec Blog</a></h1>
+    <h2>A collection of alternative solutions to granting local admin privileges</h4>
+    <p>A pretty common issue I face as an analyst is dealing with application requests where the app requires admin privileges to run. It's universally understood that it is bad practice to give your users administrator access, however there will always be edge cases where you must make an exception. Before making that exception, I think it is important to explore alternatives and/or grant the user specific access to files/folders the app needs instead of system wide access.</p>
+    <p>I want this page to be a place where I can store alternate solutions I come across to this problem before opening the flood gates of granting local admin.</p>
+    <h3>Scheduled Task</h3>
+    <p>In some cases the app is just poorly developed and requests admin privileges when it is not neccessary. You might find yourself getting stuck at a UAC prompt. By creating a Scheduled Task as the user to open the application, and ensuring "Run with highest privileges" is set, you will prevent the UAC prompt from opening up with the program is launched via the task. </p>
+    <img src="2023_2_2.png">
+    <p>To make this even more useful, you can create a blank shortcut and set the shortcut Target to the following (obviously adjusted for your application.</p>
+    <p class="code">C:\Windows\System32\schtasks.exe /run /tn "TASK NAME HERE"</p>
+    <p class="footnote">More to add...</p>
+  </body>
+</html>
